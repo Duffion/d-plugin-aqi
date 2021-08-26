@@ -1,11 +1,27 @@
 
 .d-aqinfo {
 
+    &--popover {
+        display: none;
+        position: absolute;
+        top: 105px;
+        right: 0;
+        color: #fff;
+        width: 300px;
+        text-align: right;
+    }
+
     &--bubble {
         height: 50px;
         position: relative;
         top: -15px;
+        cursor: pointer;
 
+        &:hover {
+            .d-aqinfo--popover {
+                display: block;
+            }
+        }
     }
 
     &--cir {
@@ -62,7 +78,4 @@
         }
     }
 
-    &--popover {
-        display: none;
-    }
 }

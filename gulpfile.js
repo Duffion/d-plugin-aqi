@@ -40,8 +40,22 @@ gulp.task('sass', () => {
         .pipe(browserSync.stream());
 });
 
+gulp.task('fe-sass', () => {
+    return gulp.src([
+        'assets/src/sass/fe/**/*.scss'
+    ], {})
+        .pipe(sourcemaps.init())
+        .pipe(plumber())
+        .pipe(dependents())
+        .pipe(sass())
+        .pipe(autoprefixer())
+        .pipe(minifyCss())
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest('assets/css/fe'));
+});
+
 gulp.task('js', () => {
-    return gulp.src(['assets/src/js/**/*.js'])
+    return gulp.src(['assets/src/js/*.js'], { since: gulp.lastRun('js') })
         .pipe(plumber())
         .pipe(webpack({
             mode: 'production'
@@ -54,6 +68,23 @@ gulp.task('js', () => {
         .pipe(uglify())
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('assets/js'))
+        .pipe(browserSync.stream());
+});
+
+gulp.task('fe-js', () => {
+    return gulp.src(['assets/src/js/fe/*.js'], { since: gulp.lastRun('fe-js') })
+        .pipe(plumber())
+        .pipe(webpack({
+            mode: 'production'
+        }))
+        .pipe(sourcemaps.init())
+        .pipe(babel({
+            presets: ['@babel/env']
+        }))
+        .pipe(concat('main.js'))
+        .pipe(uglify())
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest('assets/js/fe'))
         .pipe(browserSync.stream());
 });
 
@@ -81,7 +112,7 @@ gulp.task('vendor', () => {
         .pipe(browserSync.stream());
 });
 
-gulp.task('build', gulp.series('clear', 'sass', 'js', 'images', 'vendor'));
+gulp.task('build', gulp.series('clear', 'sass', 'fe-sass', 'js', 'fe-js', 'images', 'vendor'));
 
 
 gulp.task('watch', () => {
@@ -96,8 +127,12 @@ gulp.task('watch', () => {
     });
 
     const watch = [
-        'assets/src/sass/**/*.scss',
-        'assets/src/js/**/*.js'
+        'assets/src/sass/fe/*.scss',
+        'assets/src/sass/fe/includes/*.scss',
+        'assets/src/sass/*.scss',
+        'assets/src/sass/includes/*.scss',
+        'assets/src/js/*.js',
+        'assets/src/js/fe/*.js'
     ];
 
     gulp.watch(watch, gulp.series('dev')).on('change', browserSync.reload);
@@ -105,6 +140,6 @@ gulp.task('watch', () => {
     gulp.watch(watchVendor, gulp.series('vendor')).on('change', browserSync.reload);
 });
 
-gulp.task('dev', gulp.series('sass', 'js', 'watch'));
+gulp.task('dev', gulp.series('sass', 'fe-sass', 'js', 'fe-js', 'watch'));
 
 gulp.task('default', gulp.series('build', gulp.parallel('watch')));

@@ -2,20 +2,20 @@
 
 /**
  *
- * @package Duffion Framework
- * @version 0.9.7.4
+ * @package AQInfo Widget Plugin
+ * @version 0.1.0
  */
 
 namespace D\DUFFION;
 
 
 /*
- * Plugin Name: Duffion - WP Plugin Framework
+ * Plugin Name: Duffion - AQI Widget Plugin
  * Plugin URI: https://duffion.com
- * Description: This is the custom built tool that allows for modular helper tools for Fulcrum Synced sites
- * Version: 0.1.1
+ * Description: This is a custom AQI tool that integrates both Wunderground and Purple air data into displayable widgets for the frontend
+ * Version: 0.1.0
  * Author: Chris "Duffs" Crevling
- * Text Domain: duffion-plugin
+ * Text Domain: d-aqinfo-plugin
  * Author URI: https://duffion.com
  * License: GPLv2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -25,13 +25,13 @@ namespace D\DUFFION;
 
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
-if (!class_exists('D_DUFFION')) :
+if (!class_exists('D_AQI')) :
 
     // Load in global vars //
     $d_plugin_dirs = [];
     $d_modules = [];
 
-    class D_DUFFION
+    class D_AQI
     {
 
         var $version = '0.1.1';
@@ -78,7 +78,7 @@ if (!class_exists('D_DUFFION')) :
             require $this->dirs['plugin'] . '/' . $this->dirs['vendors'] . '/plugin-update-checkers/plugin-update-checker.php';
 
             $config = [
-                'git' => 'https://github.com/Duffion/d-plugin-framework/',
+                'git' => 'https://github.com/Duffion/d-plugin-aqi/',
                 'target_branch' => 'production'
             ];
 
@@ -156,19 +156,19 @@ if (!class_exists('D_DUFFION')) :
      * Global Functionset - D_FULCRUM() - only run once []
      *
      */
-    function D_DUFFION()
+    function D_AQI()
     {
-        global $d_duffion;
+        global $d_aqi;
 
-        if (!isset($d_duffion)) {
-            $d_duffion = new d_duffion();
-            $d_duffion->init();
+        if (!isset($d_aqi)) {
+            $d_aqi = new d_aqi();
+            $d_aqi->init();
         }
 
-        return $d_duffion;
+        return $d_aqi;
     }
 
     // Instantiate
-    D_DUFFION();
+    D_AQI();
 
 endif;

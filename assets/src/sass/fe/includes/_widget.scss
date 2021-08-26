@@ -1,0 +1,68 @@
+
+.d-aqinfo {
+
+    &--bubble {
+        height: 50px;
+        position: relative;
+        top: -15px;
+
+    }
+
+    &--cir {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 15px;
+        background: rgba(1, 160, 22, 0.548);
+        position: relative;
+        overflow: hidden;
+
+        &[data-aqinfo-ranking="moderate"] {
+            background: rgba(214, 184, 12, 0.548);
+        }
+
+        &[data-aqinfo-ranking="unhealthy for sensative groups"] {
+            background: rgba(216, 106, 3, 0.548);
+        }
+
+        &[data-aqinfo-ranking="unhealthy"] {
+            background: rgba(194, 15, 2, 0.548);
+        }
+
+        &[data-aqinfo-ranking="very unhealthy"] {
+            background: rgba(187, 0, 0, 0.575);
+        }
+
+        &[data-aqinfo-ranking="hazardous"] {
+            background: rgba(41, 0, 80, 0.548);
+        }
+
+
+        h3 {
+            font-size: 16px;
+            margin: 0px;
+            margin-bottom: 2.5px;
+            color: rgba(255,255,255,0.75);
+            position: relative;
+            border-bottom: 1px solid #fff;
+        }
+
+        &-title {
+            color: #fff;
+            font-size: 13px;
+            margin-top: 15px;
+        }
+
+        &-index {
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+            margin-top: 7.5px;
+        }
+    }
+
+    &--popover {
+        display: none;
+    }
+}

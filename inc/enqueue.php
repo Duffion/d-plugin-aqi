@@ -34,11 +34,31 @@ class d_enqueue
                 'hook' => 'admin_enqueue_scripts'
             ],
 
+            'add_fe_styles' => [
+                'function' => 'fe_styles',
+                'hook' => 'wp_enqueue_scripts'
+            ],
+
+            'add_fe_scripts' => [
+                'function' => 'fe_scripts',
+                'hook' => 'wp_enqueue_scripts'
+            ],
+
         ];
 
         $this->scripts = [
             'd-admin-main-js' => [
                 'file_name' => 'main.js',
+                'params' => [
+                    'deps' => ['jquery', 'jquery-ui-core']
+                ],
+                'version' => '0.0.1',
+            ]
+        ];
+
+        $this->fe_scripts = [
+            'd-aqinfo-main-js' => [
+                'file_name' => 'fe/main.js',
                 'params' => [
                     'deps' => ['jquery', 'jquery-ui-core']
                 ],
@@ -53,6 +73,12 @@ class d_enqueue
             ]
         ];
 
+        $this->fe_styles = [
+            'd-aqinfo-main-css' => [
+                'file_name' => 'fe/main.css',
+                'version' => '0.0.1',
+            ]
+        ];
         // $this->filters = [];
     }
 
@@ -109,10 +135,26 @@ class d_enqueue
         $this->_admin_('scripts');
     }
 
+    public function fe_scripts()
+    {
+        if (!empty($this->fe_scripts)) {
+            $this->_reg('scripts', $this->fe_scripts);
+        }
+        $this->_admin_('scripts');
+    }
+
     public function admin_styles()
     {
         if (!empty($this->styles)) {
             $this->_reg('styles', $this->styles);
+        }
+        $this->_admin_('styles');
+    }
+
+    public function fe_styles()
+    {
+        if (!empty($this->styles)) {
+            $this->_reg('styles', $this->fe_styles);
         }
         $this->_admin_('styles');
     }

@@ -16,6 +16,11 @@ class d_crons
 
     private $frequencies = [
         [
+            'name' => 'one_minute',
+            'interval' => 60,
+            'display' => 'Every One Minute'
+        ],
+        [
             'name' => 'five_minutes',
             'interval' => 300,
             'display' => 'Every Five Minutes'

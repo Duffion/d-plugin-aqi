@@ -36,9 +36,11 @@ class aqinfo_widget extends WP_Widget
                         <div class="d-aqinfo--cir" data-aqinfo-ranking="Healthy">
                             <h3>Current AQI</h3>
                             <span class="d-aqinfo--cir-title">Healthy</span>
-                            <strong class="d-aqinfo--cir-index d-aqinfo--index">0</strong>
                         </div>
                         <div class="d-aqinfo--popover">This was last updated at <?= date('H:i:s a'); ?></div>
+                        <div class="d-aqinfo--cir-bottom">
+                            <strong class="d-aqinfo--cir-index d-aqinfo--index">0</strong>
+                        </div>
                     </div>
                 </div>
             </div>

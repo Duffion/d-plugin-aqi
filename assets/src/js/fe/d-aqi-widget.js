@@ -50,6 +50,7 @@ let d_aqi = {
             widget.find('.d-aqinfo--cir-title').html(readings.desc);
             widget.find('.d-aqinfo--popover').html(readings.mesg);
             widget.find('.d-aqinfo--cir').attr('data-aqinfo-ranking', readings.desc.toLowerCase());
+            widget.find('.d-aqinfo--cir-bottom').attr('data-aqinfo-ranking', readings.desc.toLowerCase());
         }
     },
 

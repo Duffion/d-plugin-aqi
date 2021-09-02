@@ -2,25 +2,36 @@
 .d-aqinfo {
 
     &--popover {
-        display: none;
+        display: block;
         position: absolute;
-        top: 105px;
+        top: 70px;
         right: 0;
+        background: #3b3e40;
         color: #fff;
         width: 300px;
         text-align: right;
+        padding: 0;
+        transition: all 0.4s ease !important;
+        height: 0;
+        opacity: 0;
     }
 
     &--bubble {
-        height: 94px;
         margin-bottom: 10px;
         position: relative;
-        top: 0;
         cursor: pointer;
 
         &:hover {
             .d-aqinfo--popover {
-                display: block;
+                opacity: 1;
+                height: auto;
+                padding: 60px 30px 30px;
+            }
+
+            .d-aqinfo--cir-bottom {
+                opacity: 1;
+                height: auto;
+                padding: 0 15px 10px;
             }
         }
     }
@@ -34,12 +45,13 @@
         background: rgba(1, 160, 22, 0.548);
         position: relative;
         overflow: hidden;
+        line-height: 0.875em;
 
         &[data-aqinfo-ranking="moderate"] {
             background: rgba(214, 184, 12, 0.548);
         }
 
-        &[data-aqinfo-ranking="unhealthy for sensative groups"] {
+        &[data-aqinfo-ranking="unhealthy for sensitive groups"] {
             background: rgba(216, 106, 3, 0.548);
         }
 
@@ -71,6 +83,40 @@
             margin-top: 15px;
         }
 
+        &-bottom {
+            display: flex;
+            position: absolute;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+            background: rgba(1, 160, 22, 0.548);
+            width: 100%;
+            transition: all 0.4s ease !important;
+            height: 0;
+            opacity: 0;
+
+            &[data-aqinfo-ranking="moderate"] {
+                background: rgba(214, 184, 12, 0.548);
+            }
+
+            &[data-aqinfo-ranking="unhealthy for sensitive groups"] {
+                background: rgba(216, 106, 3, 0.548);
+            }
+
+            &[data-aqinfo-ranking="unhealthy"] {
+                background: rgba(194, 15, 2, 0.548);
+            }
+
+            &[data-aqinfo-ranking="very unhealthy"] {
+                background: rgba(187, 0, 0, 0.575);
+            }
+
+            &[data-aqinfo-ranking="hazardous"] {
+                background: rgba(41, 0, 80, 0.548);
+            }
+        }
+
         &-index {
             font-size: 18px;
             font-weight: bold;
@@ -95,46 +141,156 @@
     }
 }
 
+/* Up to 1300 width screen */
+@media (max-width: 1300px) 
+    and (min-width : 851px ) {
+    .header-block .header-right .header-bottom {
+        padding-left: 10px !important;
+        padding-right: 30px !important;
+    }
+}
+
+/* Up to 1246 width screen */
+@media (max-width: 1246px) 
+    and (min-width : 851px ) {
+    .header-block .header-right .header-bottom .primary-menu > li {
+        padding-right: 10px !important;
+    }
+}
+
+/* Up to 1203 width screen */
+@media (max-width: 1203px) 
+    and (min-width : 851px ) {
+    .header-block .header-right .header-bottom {
+        padding-left: 0 !important;
+
+        .primary-menu > li {
+            padding-right: 0 !important;
+        }
+    }
+}
+
+/* Up to 1065 width screen */
+@media (max-width: 1065px) 
+    and (min-width : 851px ) {
+    .header-block .header-right .header-bottom {
+        .primary-menu > li > a {
+            padding: 0 15px !important;
+        }
+    }
+}
+
+/* Up to 1026 width screen */
+@media (max-width: 1026px) 
+    and (min-width : 851px ) {
+    .header-block .header-right .header-bottom {
+        padding-right: 20px !important;
+
+        .primary-menu > li > a {
+            padding: 0 10px !important;
+        }
+    }
+}
+
+/* Up to 985 width screen */
+@media (max-width: 985px) 
+    and (min-width : 851px ) {
+    .header-block .header-right .header-bottom {
+        .primary-menu > li > a {
+            padding: 0 8px !important;
+        }
+    }
+}
+
+/* Up to 962 width screen */
+@media (max-width: 970px) 
+    and (min-width : 851px ) {
+    .header-block .header-right .header-bottom {
+        .primary-menu > li > a {
+            padding: 0 5px !important;
+        }
+    }
+}
+
+/* Up to 954 width screen */
+@media (max-width: 954px) 
+    and (min-width : 851px ) {
+    .header-block .header-right .header-bottom {
+        .primary-menu > li > a {
+            padding: 0 5px 0 0 !important;
+        }
+    }
+    .d-aqinfo--cir {
+        padding: 10px 5px !important;
+    }
+}
+
+/* Up to 895 width screen */
+@media (max-width: 915px)
+    and (min-width : 851px ) {
+    .header-block .header-right .header-bottom {
+        .primary-menu > li > a {
+            padding: 0 2px 0 0 !important;
+        }
+    }
+    .d-aqinfo--cir {
+        padding: 10px 2px !important;
+    }
+}
+
+/* Up to 895 width screen */
+@media (max-width: 895px) 
+    and (min-width : 851px ) {
+    .d-aqinfo--cir {
+        padding: 10px 1px !important;
+    }
+    .header-block .header-right .header-bottom .apply-link {
+        padding-left: 0 !important;
+        background: none !important;
+    }
+}
+
 /* Desktop bigger than 851px */
 @media only screen 
     and (min-width : 851px ) {
+    .header-block .header-right .header-bottom ul.primary-menu {
+        display: flex;
+    }
     .d-aqinfo {
         &--bubble {
-            top: -15px;
-            height: 50px;
             margin-bottom: 0;
         }
     }
 }
 
-/* Up to 1100 width screen */
-@media (min-width: 851px)
-    and (max-width: 1114px) {
-    .header-block .header-right .header-bottom {
-        padding-left: 10px !important;
-        padding-right: 10px !important;
+// /* Up to 1114 width tablet screen */
+// @media (min-device-width: 851px)
+//     and (max-device-width: 1114px) {
+//     .header-block .header-right .header-bottom {
+//         padding-left: 10px !important;
+//         padding-right: 10px !important;
 
-        li {
-            padding-right: 5px !important;
-        }
-    }
-}
+//         .primary-menu > li {
+//             padding-right: 5px !important;
+//         }
+//     }
+// }
 
-/* Tablet Landscape */
-@media only screen 
-    and (min-device-width : 768px ) 
-    and (max-device-width : 1024px )
-    and (orientation: landscape ) {
-    .header-block .header-right .header-bottom {
-        padding-right: 20px !important;
-    }
-}
+// /* Tablet Landscape */
+// @media only screen 
+//     and (min-device-width : 768px ) 
+//     and (max-device-width : 1024px )
+//     and (orientation: landscape ) {
+//     .header-block .header-right .header-bottom {
+//         padding-right: 20px !important;
+//     }
+// }
 
 /* iPad Pro Portrait*/
-@media only screen  
-    and (min-device-width : 1024px )
-    and (orientation: portrait ) {
-    .header-block .header-right .header-bottom {
-        padding-right: 20px !important;
-    }
-}
+// @media only screen  
+//     and (min-device-width : 1024px )
+//     and (orientation: portrait ) {
+//     .header-block .header-right .header-bottom {
+//         padding-right: 20px !important;
+//     }
+// }

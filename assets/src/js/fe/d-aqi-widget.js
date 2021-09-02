@@ -20,6 +20,12 @@ let d_aqi = {
             // lets build our data points //
             this.build.aqi();
             this.build.widget();
+
+            // Add onClick to AQI widget
+            var bubble = document.getElementsByClassName('d-aqinfo--bubble');
+            for ( const el of bubble ) {
+                el.addEventListener( 'click', this.clickAQI, false );
+            }
         }
     },
     loading: {
@@ -52,6 +58,9 @@ let d_aqi = {
             widget.find('.d-aqinfo--cir').attr('data-aqinfo-ranking', readings.desc.toLowerCase());
             widget.find('.d-aqinfo--cir-bottom').attr('data-aqinfo-ranking', readings.desc.toLowerCase());
         }
+    },
+    clickAQI: function(e) {
+        window.open( 'https://www.purpleair.com/map?opt=1/mAQI/a10/cC0&key=ONG0MQF1Y4RY4IHO&select=85827#14/39.31224/-120.15584', '_blank' );
     },
 
     AQI: {

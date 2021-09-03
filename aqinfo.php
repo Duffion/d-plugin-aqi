@@ -13,7 +13,7 @@ namespace D\DUFFION;
  * Plugin Name: Duffion - AQI Widget Plugin
  * Plugin URI: https://duffion.com
  * Description: This is a custom AQI tool that integrates both Wunderground and Purple air data into displayable widgets for the frontend
- * Version: 0.1.0
+ * Version: 0.1.1
  * Author: Chris "Duffs" Crevling
  * Text Domain: d-aqinfo-plugin
  * Author URI: https://duffion.com

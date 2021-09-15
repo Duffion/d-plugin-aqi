@@ -20,20 +20,6 @@
         margin-bottom: 10px;
         position: relative;
         cursor: pointer;
-
-        &:hover {
-            .d-aqinfo--popover {
-                opacity: 1;
-                height: auto;
-                padding: 60px 30px 30px;
-            }
-
-            .d-aqinfo--cir-bottom {
-                opacity: 1;
-                height: auto;
-                padding: 0 15px 10px;
-            }
-        }
     }
 
     &--cir {
@@ -126,6 +112,24 @@
         }
     }
 
+}
+
+@media (hover: hover) {
+    .d-aqinfo {
+        &--bubble:hover {
+            .d-aqinfo--popover {
+                opacity: 1;
+                height: auto;
+                padding: 60px 30px 30px;
+            }
+
+            .d-aqinfo--cir-bottom {
+                opacity: 1;
+                height: auto;
+                padding: 0 15px 10px;
+            }
+        }
+    }
 }
 
 @media (max-width: 700px)

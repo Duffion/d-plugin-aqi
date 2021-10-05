@@ -85,7 +85,7 @@ if (!class_exists('D_AQI')) :
             $this->updater = \Puc_v4_Factory::buildUpdateChecker(
                 $config['git'],
                 __FILE__,
-                'fulcrum'
+                'd-plugin-aqi'
             );
 
             //Set the branch that contains the stable release.

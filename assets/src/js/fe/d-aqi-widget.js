@@ -23,8 +23,8 @@ let d_aqi = {
 
             // Add onClick to AQI widget
             var bubble = document.getElementsByClassName('d-aqinfo--bubble');
-            for ( const el of bubble ) {
-                el.addEventListener( 'click', this.clickAQI, false );
+            for (const el of bubble) {
+                el.addEventListener('click', this.clickAQI, false);
             }
         }
     },
@@ -38,7 +38,7 @@ let d_aqi = {
         aqi: function () {
             var instance = d_aqi.instance;
 
-            var AQI = d_aqi.AQI.aqiFromPM(instance.p_2_5_um);
+            var AQI = d_aqi.AQI.aqiFromPM(instance.pm2_5_atm);
             var AQIDescription = d_aqi.AQI.getAQIDescription(AQI); //A short description of the provided AQI
             var AQIMessage = d_aqi.AQI.getAQIMessage(AQI); // What the provided AQI means (a longer description)
 
@@ -59,8 +59,8 @@ let d_aqi = {
             widget.find('.d-aqinfo--cir-bottom').attr('data-aqinfo-ranking', readings.desc.toLowerCase());
         }
     },
-    clickAQI: function(e) {
-        window.open( 'https://www.purpleair.com/map?opt=1/mAQI/a10/cC0&key=ONG0MQF1Y4RY4IHO&select=85827#14/39.31224/-120.15584', '_blank' );
+    clickAQI: function (e) {
+        window.open('https://www.purpleair.com/map?opt=1/mAQI/a10/cC0&key=ONG0MQF1Y4RY4IHO&select=85827#14/39.31224/-120.15584', '_blank');
     },
 
     AQI: {
